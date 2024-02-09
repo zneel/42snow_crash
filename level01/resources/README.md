@@ -2,16 +2,16 @@
 
 ## Analysis
 
-Same process as level 00. We listed file in his home and we found nothing, and this is same result with find command.
+We followed the same process as for Level 00. We listed the files in the user's home directory and found nothing of interest. The same result occurred with the `find` command.
 
-We explored many file until we opened `/etc/passwd`. One line got our attention: `flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash`
+We explored numerous files until we opened `/etc/passwd`. One particular line caught our attention: `flag01:42hDRfypTqqnw:3001:3001::/home/flag/flag01:/bin/bash`.
 
-The traditional crypt algorithm used by linux to crypt password is DES (man crypt). So we used [hashcat](https://hashcat.net/wiki/doku.php?id=example_hashes) to solve the hash.
+The traditional crypt algorithm used by Linux to encrypt passwords is DES (see `man crypt`). To solve the hash, we used [hashcat](https://hashcat.net/wiki/doku.php?id=example_hashes):
 
 ```bash
 hashcat -a 3 -m 1500 42hDRfypTqqnw --show
-42hDRfypTqqnw:abcdefg
 ```
-It returned `abcdefg` string, that used to login on `flag01`.
 
-The getflag command gives us the flag: `f2av5il02puano7naaf6adaaf`
+This command returned the string `abcdefg`, which was used to log in as `flag01`.
+
+Executing the `getflag` command provided us with the flag: `f2av5il02puano7naaf6adaaf`.
