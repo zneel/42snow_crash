@@ -1,6 +1,6 @@
 # Level 00
 
-## Analyses
+## Analysis
 
 After loggued on VM with login passord level00:00, we listed file in home's user.
 
